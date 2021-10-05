@@ -146,7 +146,7 @@ func main() {
 		}
 	}
 
-	row := rows[499]
+	row := rows[index]
 	msgs := chunk(fmt.Sprintf("🎶 %s\n%s", row[0], strings.TrimSpace(row[1])))
 
 	for _, msg := range msgs {
