@@ -147,7 +147,7 @@ func main() {
 	}
 
 	row := rows[index]
-	msgs := chunk(fmt.Sprintf("🎶 %s\n%s", row[0], strings.TrimSpace(row[1])))
+	msgs := chunk(fmt.Sprintf("🎶 %s\n\n%s", row[0], strings.TrimSpace(row[1])))
 
 	for _, msg := range msgs {
 		if err := sendMessage(msg); err != nil {
