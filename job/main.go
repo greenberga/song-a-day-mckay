@@ -147,10 +147,10 @@ func main() {
 	}
 
 	row := rows[index]
-	msgs := chunk(fmt.Sprintf("🎶 %s\n\n%s", row[0], strings.TrimSpace(row[1])))
+	msgs := chunk(fmt.Sprintf("%d. %s\n\n%s", 500-index, row[0], strings.TrimSpace(row[1])))
 
 	for _, msg := range msgs {
-		if err := sendMessage(msg); err != nil {
+		if err := sendMessage(strings.TrimSpace(msg)); err != nil {
 			log.Fatalf("failed to send message: %v", err)
 		}
 	}
