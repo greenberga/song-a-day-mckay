@@ -1,8 +1,8 @@
 package main
 
 import (
-	"encoding/csv"
 	_ "embed"
+	"encoding/csv"
 	"fmt"
 	"io"
 	"log"
@@ -31,7 +31,7 @@ func chunk(msg string) (ret []string) {
 	var b strings.Builder
 	for _, p := range strings.Split(msg, "\n") {
 		p = strings.TrimSpace(p) + "\n\n"
-		if b.Len() + len(p) > maxMsgLength {
+		if b.Len()+len(p) > maxMsgLength {
 			ret = append(ret, strings.TrimSpace(b.String()))
 			b.Reset()
 
@@ -78,7 +78,7 @@ func sendMessage(msg string) error {
 	u, _ := url.Parse(s)
 	u.User = url.UserPassword(sid, token)
 
-	timeout := time.Now().Add(10*time.Minute)
+	timeout := time.Now().Add(10 * time.Minute)
 	i := 0
 
 	for {
@@ -104,8 +104,8 @@ func sendMessage(msg string) error {
 
 		seconds := math.Exp2(float64(i))
 		millis := float64(rand.Intn(1000)) / 1000
-		backoff := math.Min(seconds + millis, maxBackoff)
-		time.Sleep(time.Second*time.Duration(backoff))
+		backoff := math.Min(seconds+millis, maxBackoff)
+		time.Sleep(time.Second * time.Duration(backoff))
 
 		i++
 	}
