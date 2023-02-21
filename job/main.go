@@ -144,6 +144,8 @@ func main() {
 		if err := sendMessage("That's all folks!"); err != nil {
 			log.Fatalf("failed to send message: %v", err)
 		}
+
+		return
 	}
 
 	row := rows[index]
